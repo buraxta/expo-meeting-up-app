@@ -6,7 +6,7 @@ import EventListItem from '~/components/EventListItem';
 
 export default function Events() {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Stack.Screen options={{ title: 'Events' }} />
 
       <FlatList
