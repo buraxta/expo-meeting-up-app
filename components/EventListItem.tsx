@@ -3,14 +3,24 @@ import { Image, Pressable, Text, View } from 'react-native';
 import dayjs from 'dayjs';
 import { Link } from 'expo-router';
 
-export default function EventListItem({ event }) {
+type Event = {
+  id: string;
+  title: string;
+  description: string;
+  datetime: string;
+  location: string;
+  image: string;
+};
+
+export default function EventListItem({ event }: { event: Event }) {
   return (
     <Link href={`/${event.id}`} asChild>
       <Pressable className="m-3 gap-3 border-b-2 border-gray-100 pb-3">
         <View className="flex-row">
           <View className="flex-1 gap-2">
             <Text className="text-[13px] font-semibold uppercase text-amber-800">
-              {dayjs(event.date).format('ddd, D MMM')} . {dayjs(event.date).format('h:mm A')}
+              {dayjs(event.datetime).format('ddd, D MMM')} .{' '}
+              {dayjs(event.datetime).format('h:mm A')}
             </Text>
             <Text className="text-xl font-bold" numberOfLines={2}>
               {event.title}
